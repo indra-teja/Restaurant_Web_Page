@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Fooddddie - Fine Dining Experience</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+      :root {
+        --primary: #d4af37;
+        --secondary: #222;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --accent: #8b4513;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--dark);
+        background-color: #fff;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Navigation */
+      .navigation-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .nav-scrolled {
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+      }
+
+      .nav-flex-row {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-flex-row li {
+        text-decoration: none;
+        list-style-type: none;
+        padding: 15px 20px;
+        position: relative;
+      }
+
+      .nav-flex-row li a {
+        color: var(--light);
+        font-size: 1.2em;
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .nav-flex-row li a:hover {
+        color: var(--primary);
+      }
+
+      .nav-flex-row li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-flex-row li a:hover::after {
+        width: 70%;
+      }
+
+      /* Hero Section */
+      .section-intro {
+        height: 100vh;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1920/1080');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color: var(--light);
+      }
+      
+      .section-intro::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/api/placeholder/800/600') center/cover no-repeat;
+        opacity: 0.15;
+        filter: blur(3px);
+        z-index: -1;
+      }
+
+      .section-intro h1 {
+        font-size: 5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: fadeInDown 1s ease;
+      }
+
+      .section-intro p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        max-width: 600px;
+        text-align: center;
+        animation: fadeInUp 1s ease 0.5s;
+        animation-fill-mode: both;
+      }
+
+      .link-to-book-wrapper {
+        animation: fadeInUp 1s ease 1s;
+        animation-fill-mode: both;
+      }
+
+      .link-to-book {
+        color: var(--light);
+        display: inline-block;
+        border: 2px solid var(--primary);
+        background-color: rgba(212, 175, 55, 0.2);
+        padding: 12px 30px;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        border-radius: 50px;
+        text-decoration: none;
+      }
+
+      .link-to-book:hover {
+        background-color: var(--primary);
+        color: var(--dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+      }
+
+      /* About Section */
+      .about-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 30px;
+        position: relative;
+        background-image: url('/api/placeholder/1920/1080');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      
+      .about-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.92);
+        z-index: 1;
+      }
+
+      .about-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      .about-section h2 {
+        color: var(--secondary);
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        position: relative;
+        text-align: center;
+      }
+
+      .about-section p, .about-section h2, .about-section .features, .about-section .quote {
+        position: relative;
+        z-index: 2;
+      }
+      
+      .about-section p {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto 20px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+
+      .quote {
+        font-style: italic;
+        font-size: 1.3rem;
+        color: var(--accent);
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* Features */
+      .features {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        width: 100%;
+      }
+
+      .feature {
+        flex: 0 0 25%;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+
+      .feature h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+      }
+
+      .feature p {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      /* Image Gallery */
+      .gallery-section {
+        padding: 50px 0;
+        background-color: #f9f9f9;
+      }
+
+      .gallery-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--primary);
+        position: relative;
+        z-index: 2;
+      }
+      
+      .gallery-section .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .carousel-inner {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        height: 500px;
+      }
+
+      .carousel-item img {
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        padding: 20px;
+        bottom: 50px;
+      }
+
+      .carousel-control-prev, .carousel-control-next {
+        width: 10%;
+      }
+
+      /* Booking Section */
+      .booking-section {
+        padding: 100px 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('/api/placeholder/1920/1080');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .booking-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--secondary);
+      }
+
+      .row-flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .flex-column-form {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 15px;
+      }
+
+      .flex-column-form h3 {
+        color: var(--secondary);
+        margin-bottom: 25px;
+        text-align: center;
+        font-size: 1.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group p {
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      .form-control {
+        border: none;
+        border-bottom: 2px solid #ddd;
+        border-radius: 0;
+        padding: 10px 5px;
+        font-size: 1rem;
+        background-color: transparent;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: none;
+      }
+
+      .btn.btn-primary {
+        font-family: 'Poppins', sans-serif;
+        color: var(--light);
+        background-color: var(--primary);
+        text-transform: uppercase;
+        font-size: 1rem;
+        padding: 12px 30px;
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .btn.btn-primary:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-box {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px;
+        background-color: var(--secondary);
+        color: var(--light);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin: 15px;
+      }
+
+      .info-box h3 {
+        color: var(--primary);
+        margin-bottom: 25px;
+        text-align: center;
+        font-size: 1.8rem;
+      }
+
+      .info-box p {
+        margin-bottom: 20px;
+      }
+
+      .info-box p span {
+        display: block;
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .info-box p span:before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+
+      .opening-time p span:before {
+        content: "\f017";
+      }
+
+      .contact-address p span:nth-child(1):before {
+        content: "\f095";
+      }
+
+      .contact-address p span:nth-child(2):before,
+      .contact-address p span:nth-child(3):before {
+        content: "\f3c5";
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--secondary);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/api/placeholder/1920/1080');
+        background-size: cover;
+        background-position: center;
+        color: var(--light);
+        padding: 50px 0 20px;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        margin: 30px 0;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+        border-radius: 50%;
+        margin: 0 10px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary);
+        color: var(--secondary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+      
+      @keyframes floating {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(0, 10px); }
+        100% { transform: translate(0, 0); }
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .section-intro h1 {
+          font-size: 4rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section-intro {
+          height: 600px;
+        }
+        
+        .section-intro h1 {
+          font-size: 3rem;
+        }
+        
+        .about-section p {
+          width: 90%;
+        }
+        
+        .feature {
+          flex: 0 0 50%;
+        }
+        
+        .carousel-inner {
+          height: 400px;
+        }
+        
+        .carousel-item img {
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .nav-flex-row {
+          flex-wrap: wrap;
+        }
+        
+        .nav-flex-row li {
+          padding: 10px;
+        }
+        
+        .section-intro {
+          height: 500px;
+        }
+        
+        .section-intro h1 {
+          font-size: 2.5rem;
+        }
+        
+        .section-intro p {
+          font-size: 1rem;
+        }
+        
+        .about-section {
+          padding: 50px 20px;
+        }
+        
+        .about-section h2 {
+          font-size: 2rem;
+        }
+        
+        .feature {
+          flex: 0 0 100%;
+        }
+        
+        .carousel-inner {
+          height: 300px;
+        }
+        
+        .carousel-item img {
+          height: 300px;
+        }
+        
+        .flex-column-form,
+        .info-box {
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navigation-bar">
+      <ul class="nav-flex-row">
+        <li class="nav-item">
+          <a href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="#booking">Reservation</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section-intro" id="home">
+      <h1 class="animate__animated animate__fadeInDown">Fooddddie</h1>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Experience the art of fine dining like never before</p>
+      <div class="link-to-book-wrapper animate__animated animate__fadeInUp animate__delay-1s">
+        <a class="link-to-book" href="#booking">Book a table</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <h2 class="animate__animated animate__fadeIn animate__delay-1s">Our Story</h2>
+      <p class="quote animate__animated animate__fadeIn animate__delay-1s">"Food is our common ground, a universal experience."</p>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Welcome to Fooddddie, where culinary excellence meets warm hospitality. Our restaurant was founded with a simple yet profound mission: to serve exquisite dishes that not only satisfy hunger but create lasting memories. Every plate that leaves our kitchen tells a story – a story of carefully selected ingredients, time-honored techniques, and innovative culinary vision.</p>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Our team of passionate chefs draws inspiration from global cuisines while honoring local traditions. We believe that dining is more than just eating; it's an experience that engages all senses and brings people together.</p>
+      
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-leaf floating"></i>
+          <h3>Fresh Ingredients</h3>
+          <p>We source only the freshest local and seasonal ingredients for our dishes.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-utensils floating"></i>
+          <h3>Master Chefs</h3>
+          <p>Our culinary team brings decades of experience from around the world.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-wine-glass-alt floating"></i>
+          <h3>Fine Selection</h3>
+          <p>Enjoy our curated wine and beverage selection that complements every meal.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-heart floating"></i>
+          <h3>Made with Love</h3>
+          <p>Every dish is prepared with passion and attention to detail.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+      <h2>Our Creations</h2>
+      <div class="container">
+        <div id="foodCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/rachel-park-hrlvr2ZlUNk-unsplash.jpg" class="d-block w-100" alt="Gourmet dish">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Exquisite Plating</h5>
+                <p>Our signature dish, combining flavors from around the world</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="img/lily-banse--YHSwy6uqvk-unsplash.jpg" class="d-block w-100" alt="Specialty dessert">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Sweet Creations</h5>
+                <p>Indulge in our decadent desserts made by our pastry chef</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="img/brooke-lark-aGjP08-HbYY-unsplash.jpg" class="d-block w-100" alt="Fresh ingredients">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Fresh Selections</h5>
+                <p>We use only the finest seasonal ingredients in our kitchen</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#foodCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#foodCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <h2>Dine With Us</h2>
+        <div class="row-flex">
+          <div class="flex-column-form">
+            <h3>Make a Reservation</h3>
+            <form class="media-centered">
+              <div class="form-group">
+                <p>Please leave your details, and we'll call you to confirm your reservation</p>
+                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="tel" class="form-control" id="phone" placeholder="Your Phone Number" required>
+              </div>
+              <div class="form-group">
+                <input type="date" class="form-control" id="date" required>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="time" required>
+                  <option value="" disabled selected>Select Time</option>
+                  <option>12:00 PM</option>
+                  <option>1:00 PM</option>
+                  <option>6:00 PM</option>
+                  <option>7:00 PM</option>
+                  <option>8:00 PM</option>
+                  <option>9:00 PM</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="guests" required>
+                  <option value="" disabled selected>Number of Guests</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Reserve Now</button>
+            </form>
+          </div>
+          
+          <div class="info-box opening-time">
+            <h3>Opening Hours</h3>
+            <p>
+              <span>Monday — Thursday: 08:00 — 22:00</span> 
+              <span>Friday — Saturday: 09:00 — 23:00</span>
+              <span>Sunday: 10:00 — 17:00</span>
+            </p>
+          </div>
+          
+          <div class="info-box contact-address" id="contact">
+            <h3>Contact Us</h3>
+            <p>
+              <span>9347549354</span>
+              <span>Madhapur, Hi Tech City</span>
+              <span>Kanya Arcade</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Fooddddie</div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Fooddddie Restaurant. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.navigation-bar');
+        if (window.scrollY > 100) {
+          nav.classList.add('nav-scrolled');
+        } else {
+          nav.classList.remove('nav-scrolled');
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Animation on scroll
+      window.addEventListener('DOMContentLoaded', (event) => {
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+          );
+        }
+        
+        // Function to add animation class when element is in viewport
+        function handleScrollAnimation() {
+          document.querySelectorAll('.feature').forEach((element, index) => {
+            if (isInViewport(element)) {
+              setTimeout(() => {
+                element.classList.add('animate__animated', 'animate__fadeInUp');
+              }, index * 200);
+            }
+          });
+        }
+        
+        // Initial check
+        handleScrollAnimation();
+        
+        // Check on scroll
+        window.addEventListener('scroll', handleScrollAnimation);
+      });
+    </script>
+  </body>
+</html>
